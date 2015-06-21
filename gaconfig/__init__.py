@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # __author__ = 'bryan'
 
-from lib.gabaseapi import GABase
 from googleapiclient.errors import HttpError
+from googleapis import gabaseapi
 import pprint
 import json
 import time
@@ -10,14 +10,14 @@ import time
 pp = pprint.PrettyPrinter(indent=4)
 
 
-class GAManagement(GABase):
+class GAManagement(gabaseapi.GABase):
     accountId = None
     config = {}
 
     profiles = None
 
     def __init__(self, accountId, emailAPIClient=None, pathAPISecretKey=None):
-        GABase.__init__(self, emailAPIClient, pathAPISecretKey)
+        gabaseapi.GABase.__init__(self, emailAPIClient, pathAPISecretKey)
         self.accountId = accountId
 
     def export_results(self):
